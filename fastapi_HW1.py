@@ -82,14 +82,6 @@ def predict_item(item: Item) -> float:
     return predict_price_for_item(item)
 
 
-@app.post("/predict_items")
-def predict_items(items: List[Item]) -> List[float]:
-    """
-    Принимает JSON с коллекцией объектов и возвращает список предсказанных стоимостей.
-    """
-    predictions = [predict_price_for_item(item) for item in items.objects]
-    return predictions
-
 @app.post("/predict_csv")
 async def predict_csv(file: UploadFile = File(...)):
     """
